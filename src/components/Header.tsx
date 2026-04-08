@@ -43,9 +43,9 @@ export default function Header() {
           : "bg-gradient-to-b from-black/60 to-transparent py-5"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 flex items-center justify-between">
         <a href="#inicio" className="flex items-center gap-3 group">
-          <div className="relative w-10 h-10 rounded-full overflow-hidden ring-1 ring-white/20 group-hover:ring-gold/60 transition-all duration-500">
+          <div className="relative w-9 h-9 rounded-full overflow-hidden ring-1 ring-white/15 group-hover:ring-gold/50 transition-all duration-500">
             <Image
               src="/logo.jpg"
               alt="Espaço Ceccarelli"
@@ -54,11 +54,8 @@ export default function Header() {
             />
           </div>
           <div className="hidden sm:block">
-            <p className="text-white text-[15px] leading-tight tracking-wide" style={{ fontFamily: "var(--font-heading)" }}>
+            <p className="text-white text-[16px] leading-tight tracking-[0.02em]" style={{ fontFamily: "var(--font-heading)", fontWeight: 300 }}>
               Espaço <span className="text-gold">Ceccarelli</span>
-            </p>
-            <p className="text-white/30 text-[9px] uppercase tracking-[0.25em]">
-              Eventos & Casamentos
             </p>
           </div>
         </a>
@@ -69,7 +66,8 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="relative text-white/70 hover:text-white text-[13px] uppercase tracking-[0.15em] px-4 py-2 transition-colors duration-300 group"
+              className="relative text-white/60 hover:text-white text-[11px] uppercase tracking-[0.2em] px-4 py-2 transition-colors duration-300 group"
+              style={{ fontFamily: "var(--font-body)", fontWeight: 400 }}
             >
               {link.label}
               <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 group-hover:w-4/5 h-px bg-gold transition-all duration-300" />
@@ -79,7 +77,8 @@ export default function Header() {
             href={WHATSAPP_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-4 border border-gold/60 hover:bg-gold hover:border-gold text-gold hover:text-dark text-[11px] uppercase tracking-[0.18em] font-semibold px-6 py-2.5 rounded-full transition-all duration-400 flex items-center gap-2"
+            className="ml-4 border border-gold/50 hover:bg-gold hover:border-gold text-gold hover:text-dark text-[10px] uppercase tracking-[0.2em] font-medium px-6 py-2.5 rounded-full transition-all duration-400 flex items-center gap-2"
+            style={{ fontFamily: "var(--font-body)" }}
           >
             <MessageCircle size={14} strokeWidth={2.5} />
             Agende sua Visita

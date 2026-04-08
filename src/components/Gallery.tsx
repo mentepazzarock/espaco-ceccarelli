@@ -86,7 +86,7 @@ export default function Gallery() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         {/* Section title */}
         <div className={`text-center mb-20 transition-all duration-1000 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <p className="text-gold uppercase tracking-[0.4em] text-[11px] sm:text-xs mb-4 font-medium">
+          <p className="text-gold uppercase tracking-[0.3em] text-[11px] sm:text-[12px] mb-4 font-medium" style={{ fontFamily: "var(--font-body)" }}>
             Momentos Especiais
           </p>
           <h2 className="text-4xl sm:text-5xl md:text-6xl text-dark mb-6">
