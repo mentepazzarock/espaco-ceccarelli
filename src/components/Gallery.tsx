@@ -57,7 +57,7 @@ export default function Gallery() {
     if (!el) return;
     const obs = new IntersectionObserver(
       ([e]) => { if (e.isIntersecting) setVisible(true); },
-      { threshold: 0.1 }
+      { threshold: 0.05 }
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -82,30 +82,30 @@ export default function Gallery() {
   }, [lightbox]);
 
   return (
-    <section id="galeria" className="py-24 md:py-32 bg-cream" ref={ref}>
+    <section id="galeria" className="py-16 sm:py-24 md:py-32 bg-cream" ref={ref}>
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         {/* Section title */}
-        <div className={`text-center mb-20 transition-all duration-1000 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <p className="text-gold uppercase tracking-[0.3em] text-[11px] sm:text-[12px] mb-4 font-medium" style={{ fontFamily: "var(--font-body)" }}>
+        <div className={`text-center mb-10 sm:mb-20 transition-all duration-1000 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+          <p className="text-gold uppercase tracking-[0.3em] text-[10px] sm:text-[12px] mb-3 sm:mb-4 font-medium" style={{ fontFamily: "var(--font-body)" }}>
             Momentos Especiais
           </p>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl text-dark mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl text-dark mb-5 sm:mb-6">
             Galeria
           </h2>
-          <div className="divider-gold max-w-[200px] mx-auto">
+          <div className="divider-gold max-w-[160px] sm:max-w-[200px] mx-auto">
             <Star size={14} className="text-gold" fill="currentColor" />
           </div>
         </div>
 
-        {/* Masonry grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[180px] md:auto-rows-[200px]">
+        {/* Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4 auto-rows-[140px] sm:auto-rows-[180px] md:auto-rows-[200px]">
           {images.map((img, i) => (
             <div
               key={i}
-              className={`relative rounded-2xl overflow-hidden cursor-pointer group ${img.span} ${
+              className={`relative rounded-lg sm:rounded-2xl overflow-hidden cursor-pointer group ${img.span} ${
                 visible ? "opacity-100 scale-100" : "opacity-0 scale-95"
               } transition-all duration-700`}
-              style={{ transitionDelay: `${i * 80 + 200}ms` }}
+              style={{ transitionDelay: `${i * 60 + 200}ms` }}
               onClick={() => setLightbox(i)}
             >
               <Image
@@ -116,8 +116,8 @@ export default function Gallery() {
                 sizes="(max-width: 768px) 50vw, 25vw"
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-500 flex items-center justify-center">
-                <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition-all duration-500">
-                  <ZoomIn size={20} className="text-white" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition-all duration-500">
+                  <ZoomIn size={18} className="text-white" />
                 </div>
               </div>
             </div>
@@ -130,42 +130,42 @@ export default function Gallery() {
         <div className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm flex items-center justify-center animate-fade-in">
           {/* Close */}
           <button
-            className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors z-10"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors z-10"
             onClick={() => setLightbox(null)}
           >
             <X size={20} />
           </button>
 
           {/* Counter */}
-          <div className="absolute top-6 left-6 text-white/40 text-sm z-10">
+          <div className="absolute top-5 left-4 sm:top-6 sm:left-6 text-white/40 text-xs sm:text-sm z-10" style={{ fontFamily: "var(--font-body)" }}>
             {lightbox + 1} / {images.length}
           </div>
 
           {/* Previous */}
           <button
-            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-gold/30 flex items-center justify-center text-white transition-all z-10"
+            className="absolute left-2 sm:left-4 md:left-8 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-gold/30 flex items-center justify-center text-white transition-all z-10"
             onClick={(e) => {
               e.stopPropagation();
               setLightbox(lightbox === 0 ? images.length - 1 : lightbox - 1);
             }}
           >
-            <ChevronLeft size={24} />
+            <ChevronLeft size={22} />
           </button>
 
           {/* Next */}
           <button
-            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-gold/30 flex items-center justify-center text-white transition-all z-10"
+            className="absolute right-2 sm:right-4 md:right-8 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-gold/30 flex items-center justify-center text-white transition-all z-10"
             onClick={(e) => {
               e.stopPropagation();
               setLightbox(lightbox === images.length - 1 ? 0 : lightbox + 1);
             }}
           >
-            <ChevronRight size={24} />
+            <ChevronRight size={22} />
           </button>
 
           {/* Image */}
           <div
-            className="relative w-[90vw] h-[80vh] max-w-5xl"
+            className="relative w-[85vw] h-[70vh] sm:w-[90vw] sm:h-[80vh] max-w-5xl"
             onClick={() => setLightbox(null)}
           >
             <Image

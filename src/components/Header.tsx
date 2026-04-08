@@ -39,13 +39,13 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
         scrolled
-          ? "glass shadow-2xl py-3"
-          : "bg-gradient-to-b from-black/60 to-transparent py-5"
+          ? "glass shadow-2xl py-2.5 sm:py-3"
+          : "bg-gradient-to-b from-black/60 to-transparent py-4 sm:py-5"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 flex items-center justify-between">
-        <a href="#inicio" className="flex items-center gap-3 group">
-          <div className="relative w-9 h-9 rounded-full overflow-hidden ring-1 ring-white/15 group-hover:ring-gold/50 transition-all duration-500">
+      <div className="max-w-7xl mx-auto px-5 sm:px-10 lg:px-16 flex items-center justify-between">
+        <a href="#inicio" className="flex items-center gap-2.5 sm:gap-3 group">
+          <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden ring-1 ring-white/15 group-hover:ring-gold/50 transition-all duration-500">
             <Image
               src="/logo.jpg"
               alt="Espaço Ceccarelli"
@@ -53,11 +53,9 @@ export default function Header() {
               className="object-cover"
             />
           </div>
-          <div className="hidden sm:block">
-            <p className="text-white text-[16px] leading-tight tracking-[0.02em]" style={{ fontFamily: "var(--font-heading)", fontWeight: 300 }}>
-              Espaço <span className="text-gold">Ceccarelli</span>
-            </p>
-          </div>
+          <p className="text-white text-[14px] sm:text-[16px] leading-tight tracking-[0.02em]" style={{ fontFamily: "var(--font-heading)", fontWeight: 300 }}>
+            Espaço <span className="text-gold">Ceccarelli</span>
+          </p>
         </a>
 
         {/* Desktop nav */}
@@ -80,7 +78,7 @@ export default function Header() {
             className="ml-4 border border-gold/50 hover:bg-gold hover:border-gold text-gold hover:text-dark text-[10px] uppercase tracking-[0.2em] font-medium px-6 py-2.5 rounded-full transition-all duration-400 flex items-center gap-2"
             style={{ fontFamily: "var(--font-body)" }}
           >
-            <MessageCircle size={14} strokeWidth={2.5} />
+            <MessageCircle size={13} strokeWidth={2.5} />
             Agende sua Visita
           </a>
         </nav>
@@ -88,50 +86,60 @@ export default function Header() {
         {/* Mobile hamburger */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="lg:hidden text-white p-2 hover:text-gold transition-colors"
+          className="lg:hidden text-white p-1.5 hover:text-gold transition-colors"
           aria-label="Menu"
         >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {/* Mobile menu overlay */}
       {menuOpen && (
         <div
-          className="lg:hidden fixed inset-0 top-0 bg-black/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center gap-6 animate-fade-in"
+          className="lg:hidden fixed inset-0 top-0 bg-dark/98 backdrop-blur-xl z-40 flex flex-col items-center justify-center gap-5 animate-fade-in"
           onClick={() => setMenuOpen(false)}
         >
           <button
-            className="absolute top-5 right-5 text-white/70 hover:text-white p-2"
+            className="absolute top-4 right-5 text-white/60 hover:text-white p-2"
             onClick={() => setMenuOpen(false)}
           >
-            <X size={28} />
+            <X size={24} />
           </button>
-          <Image
-            src="/logo.jpg"
-            alt="Espaço Ceccarelli"
-            width={80}
-            height={80}
-            className="rounded-full ring-2 ring-gold/40 mb-4"
-          />
-          {navLinks.map((link, i) => (
+
+          {/* Logo in mobile menu */}
+          <div className="flex items-center gap-3 mb-6">
+            <Image
+              src="/logo.jpg"
+              alt="Espaço Ceccarelli"
+              width={48}
+              height={48}
+              className="rounded-full ring-1 ring-gold/30"
+            />
+            <p className="text-white text-lg" style={{ fontFamily: "var(--font-heading)", fontWeight: 300 }}>
+              Espaço <span className="text-gold">Ceccarelli</span>
+            </p>
+          </div>
+
+          {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="text-white/80 hover:text-gold text-xl tracking-[0.2em] uppercase transition-colors py-2"
-              style={{ animationDelay: `${i * 0.08}s` }}
+              className="text-white/70 hover:text-gold text-base tracking-[0.15em] uppercase transition-colors py-1.5"
+              style={{ fontFamily: "var(--font-body)", fontWeight: 300 }}
             >
               {link.label}
             </a>
           ))}
+
           <a
             href={WHATSAPP_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 bg-gradient-to-r from-gold to-gold-dark text-dark font-bold text-sm uppercase tracking-wider px-10 py-3.5 rounded-full flex items-center gap-2"
+            className="mt-4 btn-gold text-white text-[11px] uppercase tracking-[0.2em] font-medium px-8 py-3.5 rounded-full flex items-center gap-2"
+            style={{ fontFamily: "var(--font-body)" }}
           >
-            <MessageCircle size={16} />
+            <MessageCircle size={14} />
             Agende sua Visita
           </a>
         </div>

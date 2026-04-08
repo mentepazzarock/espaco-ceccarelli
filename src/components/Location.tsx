@@ -11,6 +11,7 @@ import {
   Car,
   Star,
   MessageCircle,
+  ArrowRight,
 } from "lucide-react";
 
 const WHATSAPP_LINK =
@@ -35,7 +36,7 @@ const info = [
   {
     icon: Navigation,
     title: "Como Chegar",
-    lines: ["Fácil acesso — centro de Rio Bonito", "~80 km do Rio de Janeiro", "Próximo à BR-101 e RJ-124"],
+    lines: ["Centro de Rio Bonito", "~80 km do Rio de Janeiro"],
   },
 ];
 
@@ -54,43 +55,44 @@ export default function Location() {
     if (!el) return;
     const obs = new IntersectionObserver(
       ([e]) => { if (e.isIntersecting) setVisible(true); },
-      { threshold: 0.1 }
+      { threshold: 0.05 }
     );
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
 
   return (
-    <section id="localizacao" className="py-24 md:py-32 bg-cream" ref={ref}>
+    <section id="localizacao" className="py-16 sm:py-24 md:py-32 bg-cream" ref={ref}>
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         {/* Section title */}
-        <div className={`text-center mb-20 transition-all duration-1000 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <p className="text-gold uppercase tracking-[0.3em] text-[11px] sm:text-[12px] mb-4 font-medium" style={{ fontFamily: "var(--font-body)" }}>
+        <div className={`text-center mb-10 sm:mb-20 transition-all duration-1000 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+          <p className="text-gold uppercase tracking-[0.3em] text-[10px] sm:text-[12px] mb-3 sm:mb-4 font-medium" style={{ fontFamily: "var(--font-body)" }}>
             Venha nos Conhecer
           </p>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl text-dark mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl text-dark mb-5 sm:mb-6">
             Localização
           </h2>
-          <div className="divider-gold max-w-[200px] mx-auto">
+          <div className="divider-gold max-w-[160px] sm:max-w-[200px] mx-auto">
             <Star size={14} className="text-gold" fill="currentColor" />
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-10 lg:gap-12">
-          {/* Info cards — 2 cols */}
-          <div className={`lg:col-span-2 space-y-6 transition-all duration-1000 delay-200 ${visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"}`}>
+        <div className="grid lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-12">
+          {/* Info */}
+          <div className={`lg:col-span-2 space-y-5 sm:space-y-6 transition-all duration-1000 delay-200 ${visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"}`}>
             {info.map((item) => (
               <div
                 key={item.title}
-                className="flex items-start gap-4 group"
+                className="flex items-start gap-3 sm:gap-4 group"
               >
-                <div className="w-11 h-11 bg-white rounded-xl flex items-center justify-center shrink-0 group-hover:bg-gold/10 transition-colors duration-300 shadow-sm">
-                  <item.icon size={18} className="text-gold" />
+                <div className="w-10 h-10 sm:w-11 sm:h-11 bg-white rounded-lg sm:rounded-xl flex items-center justify-center shrink-0 group-hover:bg-gold/10 transition-colors duration-300 shadow-sm">
+                  <item.icon size={16} className="text-gold sm:hidden" />
+                  <item.icon size={18} className="text-gold hidden sm:block" />
                 </div>
                 <div>
-                  <p className="text-dark font-semibold text-sm mb-1">{item.title}</p>
+                  <p className="text-dark font-semibold text-[13px] sm:text-sm mb-0.5 sm:mb-1">{item.title}</p>
                   {item.lines.map((line) => (
-                    <p key={line} className="text-dark/50 text-[13px] leading-relaxed">
+                    <p key={line} className="text-dark/50 text-[12px] sm:text-[13px] leading-relaxed">
                       {line}
                     </p>
                   ))}
@@ -99,13 +101,13 @@ export default function Location() {
             ))}
 
             {/* Amenities */}
-            <div className="flex flex-wrap gap-3 pt-4">
+            <div className="flex flex-wrap gap-2 sm:gap-3 pt-2 sm:pt-4">
               {amenities.map((a) => (
                 <span
                   key={a.label}
-                  className="flex items-center gap-1.5 bg-white text-dark/60 text-[11px] font-medium px-3 py-2 rounded-lg shadow-sm"
+                  className="flex items-center gap-1.5 bg-white text-dark/60 text-[10px] sm:text-[11px] font-medium px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg shadow-sm"
                 >
-                  <a.icon size={13} className="text-gold" />
+                  <a.icon size={12} className="text-gold" />
                   {a.label}
                 </span>
               ))}
@@ -116,24 +118,25 @@ export default function Location() {
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-gold inline-flex items-center gap-3 text-white uppercase tracking-[0.15em] text-[12px] font-medium px-8 py-4 rounded-full mt-4"
+              className="btn-gold w-full sm:w-auto inline-flex items-center justify-center gap-2.5 text-white uppercase tracking-[0.15em] text-[11px] sm:text-[12px] font-medium px-7 sm:px-8 py-3.5 sm:py-4 rounded-full mt-2 sm:mt-4"
+              style={{ fontFamily: "var(--font-body)" }}
             >
-              <MessageCircle size={16} />
               Agende sua Visita
+              <ArrowRight size={14} strokeWidth={2.5} />
             </a>
           </div>
 
-          {/* Map — 3 cols */}
-          <div className={`lg:col-span-3 rounded-2xl overflow-hidden shadow-xl h-[420px] lg:h-auto transition-all duration-1000 delay-400 ${visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"}`}>
+          {/* Map */}
+          <div className={`lg:col-span-3 rounded-xl sm:rounded-2xl overflow-hidden shadow-xl h-[300px] sm:h-[420px] lg:h-auto transition-all duration-1000 delay-400 ${visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"}`}>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d919.5!2d-42.6240853!3d-22.7084389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x978218e3a0b7c5%3A0x2e89bf6f5f09df0!2sR.%20J%C3%BAlia%20Cortines%2C%2064%20-%20Centro%2C%20Rio%20Bonito%20-%20RJ%2C%2028800-000!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
               width="100%"
               height="100%"
-              style={{ border: 0, minHeight: 420 }}
+              style={{ border: 0, minHeight: 300 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Localização Espaço Ceccarelli — Rua Júlia Cortines, 64, Centro, Rio Bonito/RJ"
+              title="Localização Espaço Ceccarelli"
             />
           </div>
         </div>
