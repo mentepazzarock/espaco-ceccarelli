@@ -109,7 +109,7 @@ export default function Structure() {
           {spaces.map((space, i) => (
             <div
               key={space.title}
-              className={`group relative bg-cream rounded-2xl overflow-hidden transition-all duration-700 hover:shadow-2xl hover:-translate-y-2 ${
+              className={`group relative bg-cream rounded-2xl overflow-hidden transition-all duration-700 hover:shadow-xl hover:-translate-y-1 ${
                 visible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"

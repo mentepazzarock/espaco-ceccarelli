@@ -61,7 +61,7 @@ export default function Location() {
   }, []);
 
   return (
-    <section id="localizacao" className="py-24 md:py-32 bg-white" ref={ref}>
+    <section id="localizacao" className="py-24 md:py-32 bg-cream" ref={ref}>
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         {/* Section title */}
         <div className={`text-center mb-20 transition-all duration-1000 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
@@ -84,7 +84,7 @@ export default function Location() {
                 key={item.title}
                 className="flex items-start gap-4 group"
               >
-                <div className="w-11 h-11 bg-cream rounded-xl flex items-center justify-center shrink-0 group-hover:bg-gold/10 transition-colors duration-300">
+                <div className="w-11 h-11 bg-white rounded-xl flex items-center justify-center shrink-0 group-hover:bg-gold/10 transition-colors duration-300 shadow-sm">
                   <item.icon size={18} className="text-gold" />
                 </div>
                 <div>
@@ -103,7 +103,7 @@ export default function Location() {
               {amenities.map((a) => (
                 <span
                   key={a.label}
-                  className="flex items-center gap-1.5 bg-cream text-dark/60 text-[11px] font-medium px-3 py-2 rounded-lg"
+                  className="flex items-center gap-1.5 bg-white text-dark/60 text-[11px] font-medium px-3 py-2 rounded-lg shadow-sm"
                 >
                   <a.icon size={13} className="text-gold" />
                   {a.label}

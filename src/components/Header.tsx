@@ -45,7 +45,7 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between">
         <a href="#inicio" className="flex items-center gap-3 group">
-          <div className="relative w-11 h-11 rounded-full overflow-hidden ring-2 ring-gold/40 group-hover:ring-gold transition-all duration-500">
+          <div className="relative w-10 h-10 rounded-full overflow-hidden ring-1 ring-white/20 group-hover:ring-gold/60 transition-all duration-500">
             <Image
               src="/logo.jpg"
               alt="Espaço Ceccarelli"
@@ -54,11 +54,11 @@ export default function Header() {
             />
           </div>
           <div className="hidden sm:block">
-            <p className="text-white text-base leading-tight tracking-wide" style={{ fontFamily: "var(--font-heading)" }}>
+            <p className="text-white text-[15px] leading-tight tracking-wide" style={{ fontFamily: "var(--font-heading)" }}>
               Espaço <span className="text-gold">Ceccarelli</span>
             </p>
-            <p className="text-white/40 text-[10px] uppercase tracking-[0.2em]">
-              Rio Bonito — RJ
+            <p className="text-white/30 text-[9px] uppercase tracking-[0.25em]">
+              Eventos & Casamentos
             </p>
           </div>
         </a>
@@ -79,7 +79,7 @@ export default function Header() {
             href={WHATSAPP_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-4 bg-gradient-to-r from-gold to-gold-dark hover:from-gold-light hover:to-gold text-dark font-bold text-[12px] uppercase tracking-[0.15em] px-6 py-2.5 rounded-full transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-gold/25"
+            className="ml-4 border border-gold/60 hover:bg-gold hover:border-gold text-gold hover:text-dark text-[11px] uppercase tracking-[0.18em] font-semibold px-6 py-2.5 rounded-full transition-all duration-400 flex items-center gap-2"
           >
             <MessageCircle size={14} strokeWidth={2.5} />
             Agende sua Visita
