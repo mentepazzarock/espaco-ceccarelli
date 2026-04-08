@@ -1,30 +1,31 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Lato } from "next/font/google";
+import { Cormorant_Garamond, Raleway } from "next/font/google";
 import "./globals.css";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const cormorant = Cormorant_Garamond({
+  variable: "--font-heading",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const lato = Lato({
-  variable: "--font-lato",
+const raleway = Raleway({
+  variable: "--font-body",
   subsets: ["latin"],
   display: "swap",
-  weight: ["300", "400", "700"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Espaço Ceccarelli | Eventos e Casamentos em Rio Bonito/RJ",
+  title: "Espaço Ceccarelli | Eventos & Casamentos em Rio Bonito — RJ",
   description:
-    "O cenário perfeito para o dia mais especial da sua vida. Espaço Ceccarelli em Rio Bonito/RJ — casamentos, festas e eventos corporativos com estrutura completa.",
-  keywords: "casamento, eventos, Rio Bonito, RJ, espaço de festas, Ceccarelli",
+    "Há mais de 13 anos realizando sonhos em Rio Bonito/RJ. Salão sofisticado com mezanino, pé-direito alto, iluminação cênica e ambientes versáteis para casamentos, debutantes e eventos corporativos.",
+  keywords:
+    "casamento Rio Bonito, espaço de eventos RJ, Ceccarelli, salão de festas, debutante, evento corporativo",
   openGraph: {
-    title: "Espaço Ceccarelli | Eventos e Casamentos em Rio Bonito/RJ",
+    title: "Espaço Ceccarelli | Eventos & Casamentos em Rio Bonito — RJ",
     description:
-      "O cenário perfeito para o dia mais especial da sua vida.",
+      "O cenário perfeito para o dia mais especial da sua vida. Salão com mezanino, pé-direito alto e acabamentos sofisticados no coração de Rio Bonito.",
     type: "website",
     locale: "pt_BR",
   },
@@ -38,7 +39,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${playfair.variable} ${lato.variable} antialiased`}
+      className={`${cormorant.variable} ${raleway.variable} antialiased`}
     >
       <body>{children}</body>
     </html>

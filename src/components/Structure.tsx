@@ -1,110 +1,150 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import {
+  Crown,
+  TreePine,
+  Wine,
+  ChefHat,
+  Heart,
+  Lightbulb,
+  Star,
+} from "lucide-react";
 
 const spaces = [
   {
     title: "Salão Principal",
     description:
-      "Amplo salão climatizado com capacidade para até 300 convidados, decoração elegante e pista de dança integrada.",
+      "Amplo salão climatizado com pé-direito alto, mezanino sofisticado e paredes de tijolos aparentes. Um ambiente versátil que acomoda pista de dança, lounge e mesa de bolo.",
     image:
       "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=600&q=80",
-    features: ["Climatizado", "300 lugares", "Pista de dança"],
+    icon: Crown,
+    accent: "Climatizado",
   },
   {
-    title: "Cerimônia ao Ar Livre",
+    title: "Jardim & Pérgola",
     description:
-      "Jardim gramado com paisagismo encantador, pérgola decorativa e vista panorâmica — o cenário dos sonhos para o seu 'sim'.",
+      "Área externa com jardim gramado e pérgola decorativa, perfeita para cerimônias ao ar livre rodeadas pela natureza exuberante de Rio Bonito.",
     image:
       "https://images.unsplash.com/photo-1478146059778-26028b07395a?w=600&q=80",
-    features: ["Jardim gramado", "Pérgola", "Vista panorâmica"],
+    icon: TreePine,
+    accent: "Ao ar livre",
   },
   {
     title: "Lounge & Bar",
     description:
-      "Área lounge sofisticada com bar completo, iluminação intimista e mobiliário confortável para os momentos de descontração.",
+      "Espaço lounge sofisticado com iluminação intimista, ideal para momentos de descontração e socialização dos convidados durante o evento.",
     image:
       "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80",
-    features: ["Bar completo", "Iluminação intimista", "Mobiliário premium"],
+    icon: Wine,
+    accent: "Iluminação cênica",
   },
   {
-    title: "Espaço Gourmet",
+    title: "Cozinha Profissional",
     description:
-      "Cozinha profissional equipada para buffets e serviços de catering, garantindo uma experiência gastronômica impecável.",
+      "Cozinha equipada e elogiada por clientes — perfeita para buffets e serviços de catering, garantindo uma experiência gastronômica impecável.",
     image:
       "https://images.unsplash.com/photo-1555244162-803834f70033?w=600&q=80",
-    features: ["Cozinha industrial", "Área de preparo", "Buffet"],
+    icon: ChefHat,
+    accent: "Completa",
   },
   {
-    title: "Suíte da Noiva",
+    title: "Mezanino",
     description:
-      "Suíte exclusiva e aconchegante para a noiva e madrinhas se prepararem com todo conforto e privacidade.",
+      "Mezanino elegante que proporciona uma vista panorâmica do salão, criando um segundo andar sofisticado com acabamentos de alto padrão.",
     image:
       "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600&q=80",
-    features: ["Suíte privativa", "Espelhos", "Conforto total"],
+    icon: Heart,
+    accent: "Vista panorâmica",
   },
   {
-    title: "Estacionamento",
+    title: "Iluminação Cênica",
     description:
-      "Amplo estacionamento privativo com segurança para que seus convidados cheguem e saiam com total tranquilidade.",
+      "Sistema de iluminação completo com focos no interior e exterior, destacando a fachada moderna e criando atmosferas sob medida para cada momento.",
     image:
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
-    features: ["Privativo", "Segurança", "Ampla capacidade"],
+      "https://images.unsplash.com/photo-1470290378698-263fa7ca60ab?w=600&q=80",
+    icon: Lightbulb,
+    accent: "Interna & externa",
   },
 ];
 
 export default function Structure() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) setVisible(true); },
+      { threshold: 0.1 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
   return (
-    <section id="estrutura" className="py-20 md:py-28 bg-cream">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="estrutura" className="py-24 md:py-32 bg-white" ref={ref}>
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
         {/* Section title */}
-        <div className="text-center mb-16">
-          <p className="text-gold uppercase tracking-[0.3em] text-sm mb-3">
+        <div className={`text-center mb-20 transition-all duration-1000 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+          <p className="text-gold uppercase tracking-[0.4em] text-[11px] sm:text-xs mb-4 font-medium">
             Ambientes
           </p>
-          <h2 className="text-3xl md:text-5xl text-dark mb-4">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl text-dark mb-6">
             Nossa Estrutura
           </h2>
-          <div className="divider-gold max-w-xs mx-auto">
-            <span className="text-gold text-2xl">&#10022;</span>
+          <div className="divider-gold max-w-[200px] mx-auto">
+            <Star size={14} className="text-gold" fill="currentColor" />
           </div>
-          <p className="text-dark/60 mt-6 max-w-2xl mx-auto">
-            Cada ambiente foi cuidadosamente planejado para oferecer conforto,
-            elegância e funcionalidade ao seu evento.
+          <p className="text-dark/50 mt-8 max-w-xl mx-auto text-[15px] leading-relaxed">
+            Ambientes versáteis e sofisticados, pensados para que cada detalhe
+            do seu evento seja impecável.
           </p>
         </div>
 
         {/* Cards grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {spaces.map((space) => (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {spaces.map((space, i) => (
             <div
               key={space.title}
-              className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1"
+              className={`group relative bg-cream rounded-2xl overflow-hidden transition-all duration-700 hover:shadow-2xl hover:-translate-y-2 ${
+                visible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: `${i * 100 + 200}ms` }}
             >
-              <div className="relative h-56 overflow-hidden">
+              {/* Image */}
+              <div className="relative h-52 overflow-hidden">
                 <Image
                   src={space.image}
                   alt={space.title}
                   fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="object-cover group-hover:scale-110 transition-transform duration-[800ms] ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                <h3 className="absolute bottom-4 left-4 text-white text-xl">
+                <div className="absolute inset-0 bg-gradient-to-t from-dark/70 via-dark/20 to-transparent" />
+
+                {/* Icon badge */}
+                <div className="absolute top-4 right-4 w-10 h-10 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/20">
+                  <space.icon size={18} className="text-white" />
+                </div>
+
+                {/* Accent tag */}
+                <span className="absolute bottom-4 left-4 bg-gold/90 text-dark text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+                  {space.accent}
+                </span>
+              </div>
+
+              {/* Content */}
+              <div className="p-6">
+                <h3 className="text-xl text-dark mb-3 group-hover:text-gold transition-colors duration-300">
                   {space.title}
                 </h3>
-              </div>
-              <div className="p-6">
-                <p className="text-dark/70 text-sm leading-relaxed mb-4">
+                <p className="text-dark/50 text-[13px] leading-relaxed">
                   {space.description}
                 </p>
-                <div className="flex flex-wrap gap-2">
-                  {space.features.map((f) => (
-                    <span
-                      key={f}
-                      className="bg-gold/10 text-gold-dark text-xs px-3 py-1 rounded-full"
-                    >
-                      {f}
-                    </span>
-                  ))}
-                </div>
               </div>
             </div>
           ))}
