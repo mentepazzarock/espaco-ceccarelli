@@ -3,18 +3,16 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Menu, X, MessageCircle } from "lucide-react";
+import { WHATSAPP_LINK_GENERIC } from "@/lib/constants";
 
 const navLinks = [
-  { href: "#inicio", label: "Início" },
+  { href: "#inicio", label: "Inicio" },
   { href: "#sobre", label: "Sobre" },
   { href: "#estrutura", label: "Estrutura" },
   { href: "#galeria", label: "Galeria" },
   { href: "#depoimentos", label: "Depoimentos" },
-  { href: "#localizacao", label: "Localização" },
+  { href: "#localizacao", label: "Localizacao" },
 ];
-
-const WHATSAPP_LINK =
-  "https://wa.me/5521964310877?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20o%20Espa%C3%A7o%20Ceccarelli";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -48,13 +46,13 @@ export default function Header() {
           <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden ring-1 ring-white/15 group-hover:ring-gold/50 transition-all duration-500">
             <Image
               src="/logo.jpg"
-              alt="Espaço Ceccarelli"
+              alt="Espaco Ceccarelli"
               fill
               className="object-cover"
             />
           </div>
-          <p className="text-white text-[14px] sm:text-[16px] leading-tight tracking-[0.02em]" style={{ fontFamily: "var(--font-heading)", fontWeight: 300 }}>
-            Espaço <span className="text-gold">Ceccarelli</span>
+          <p className="text-white text-[14px] sm:text-[16px] leading-tight tracking-wide" style={{ fontFamily: "var(--font-heading)" }}>
+            Espaco <span className="text-gold font-medium">Ceccarelli</span>
           </p>
         </a>
 
@@ -64,18 +62,18 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="relative text-white/60 hover:text-white text-[11px] uppercase tracking-[0.2em] px-4 py-2 transition-colors duration-300 group"
+              className="relative text-white/55 hover:text-white text-[11px] uppercase tracking-[0.18em] px-4 py-2 transition-colors duration-300 group"
               style={{ fontFamily: "var(--font-body)", fontWeight: 400 }}
             >
               {link.label}
-              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 group-hover:w-4/5 h-px bg-gold transition-all duration-300" />
+              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 group-hover:w-3/4 h-px bg-gold/60 transition-all duration-300" />
             </a>
           ))}
           <a
-            href={WHATSAPP_LINK}
+            href={WHATSAPP_LINK_GENERIC}
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-4 border border-gold/50 hover:bg-gold hover:border-gold text-gold hover:text-dark text-[10px] uppercase tracking-[0.2em] font-medium px-6 py-2.5 rounded-full transition-all duration-400 flex items-center gap-2"
+            className="ml-5 border border-gold/40 hover:bg-gold hover:border-gold text-gold hover:text-dark text-[10px] uppercase tracking-[0.2em] font-medium px-7 py-2.5 rounded-full transition-all duration-400 flex items-center gap-2"
             style={{ fontFamily: "var(--font-body)" }}
           >
             <MessageCircle size={13} strokeWidth={2.5} />
@@ -96,27 +94,27 @@ export default function Header() {
       {/* Mobile menu overlay */}
       {menuOpen && (
         <div
-          className="lg:hidden fixed inset-0 top-0 bg-dark/98 backdrop-blur-xl z-40 flex flex-col items-center justify-center gap-5 animate-fade-in"
+          className="lg:hidden fixed inset-0 top-0 bg-dark/[0.97] backdrop-blur-xl z-40 flex flex-col items-center justify-center gap-5 animate-fade-in"
           onClick={() => setMenuOpen(false)}
         >
           <button
-            className="absolute top-4 right-5 text-white/60 hover:text-white p-2"
+            className="absolute top-4 right-5 text-white/50 hover:text-white p-2"
             onClick={() => setMenuOpen(false)}
           >
             <X size={24} />
           </button>
 
           {/* Logo in mobile menu */}
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex items-center gap-3 mb-8">
             <Image
               src="/logo.jpg"
-              alt="Espaço Ceccarelli"
+              alt="Espaco Ceccarelli"
               width={48}
               height={48}
               className="rounded-full ring-1 ring-gold/30"
             />
-            <p className="text-white text-lg" style={{ fontFamily: "var(--font-heading)", fontWeight: 300 }}>
-              Espaço <span className="text-gold">Ceccarelli</span>
+            <p className="text-white text-lg tracking-wide" style={{ fontFamily: "var(--font-heading)" }}>
+              Espaco <span className="text-gold font-medium">Ceccarelli</span>
             </p>
           </div>
 
@@ -125,18 +123,18 @@ export default function Header() {
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="text-white/70 hover:text-gold text-base tracking-[0.15em] uppercase transition-colors py-1.5"
-              style={{ fontFamily: "var(--font-body)", fontWeight: 300 }}
+              className="text-white/60 hover:text-gold text-[15px] tracking-[0.15em] uppercase transition-colors py-1.5"
+              style={{ fontFamily: "var(--font-body)", fontWeight: 400 }}
             >
               {link.label}
             </a>
           ))}
 
           <a
-            href={WHATSAPP_LINK}
+            href={WHATSAPP_LINK_GENERIC}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 btn-gold text-white text-[11px] uppercase tracking-[0.2em] font-medium px-8 py-3.5 rounded-full flex items-center gap-2"
+            className="mt-6 btn-gold text-white text-[11px] uppercase tracking-[0.2em] font-medium px-9 py-4 rounded-full flex items-center gap-2.5"
             style={{ fontFamily: "var(--font-body)" }}
           >
             <MessageCircle size={14} />

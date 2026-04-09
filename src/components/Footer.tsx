@@ -1,15 +1,14 @@
 import Image from "next/image";
 import { Phone, MapPin, Heart } from "lucide-react";
-
-const WHATSAPP_LINK = "https://wa.me/5521964310877";
+import { SOCIAL_LINKS } from "@/lib/constants";
 
 const navLinks = [
-  { href: "#inicio", label: "Início" },
+  { href: "#inicio", label: "Inicio" },
   { href: "#sobre", label: "Sobre" },
   { href: "#estrutura", label: "Estrutura" },
   { href: "#galeria", label: "Galeria" },
   { href: "#depoimentos", label: "Depoimentos" },
-  { href: "#localizacao", label: "Localização" },
+  { href: "#localizacao", label: "Localizacao" },
 ];
 
 function InstagramIcon({ className }: { className?: string }) {
@@ -37,44 +36,44 @@ function WhatsAppIcon({ className }: { className?: string }) {
 }
 
 const socials = [
-  { href: "https://www.instagram.com/espaco_ceccarelli/", icon: InstagramIcon, label: "Instagram" },
-  { href: "https://www.facebook.com/EspacoCeccarelli/", icon: FacebookIcon, label: "Facebook" },
-  { href: WHATSAPP_LINK, icon: WhatsAppIcon, label: "WhatsApp" },
+  { href: SOCIAL_LINKS.instagram, icon: InstagramIcon, label: "Instagram" },
+  { href: SOCIAL_LINKS.facebook, icon: FacebookIcon, label: "Facebook" },
+  { href: SOCIAL_LINKS.whatsapp, icon: WhatsAppIcon, label: "WhatsApp" },
 ];
 
 export default function Footer() {
   return (
     <footer className="bg-dark relative overflow-hidden">
       {/* Top gold line */}
-      <div className="h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
+      <div className="h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 pt-12 sm:pt-16 pb-8 sm:pb-10">
-        <div className="grid grid-cols-2 md:grid-cols-12 gap-8 sm:gap-12 mb-10 sm:mb-14">
-          {/* Brand — full width on mobile */}
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 pt-14 sm:pt-20 pb-8 sm:pb-10">
+        <div className="grid grid-cols-2 md:grid-cols-12 gap-8 sm:gap-12 mb-12 sm:mb-16">
+          {/* Brand */}
           <div className="col-span-2 md:col-span-5">
-            <div className="flex items-center gap-3 mb-5 sm:mb-6">
+            <div className="flex items-center gap-3 mb-6 sm:mb-7">
               <Image
                 src="/logo.jpg"
-                alt="Espaço Ceccarelli"
-                width={40}
-                height={40}
-                className="rounded-full ring-1 ring-gold/30"
+                alt="Espaco Ceccarelli"
+                width={42}
+                height={42}
+                className="rounded-full ring-1 ring-gold/25"
               />
               <div>
-                <p className="text-white text-base sm:text-lg tracking-wide" style={{ fontFamily: "var(--font-heading)", fontWeight: 300 }}>
-                  Espaço <span className="text-gold">Ceccarelli</span>
+                <p className="text-white text-base sm:text-lg tracking-wide" style={{ fontFamily: "var(--font-heading)" }}>
+                  Espaco <span className="text-gold font-medium">Ceccarelli</span>
                 </p>
-                <p className="text-white/25 text-[9px] sm:text-[10px] uppercase tracking-[0.2em]" style={{ fontFamily: "var(--font-body)" }}>
+                <p className="text-white/20 text-[9px] sm:text-[10px] uppercase tracking-[0.2em]" style={{ fontFamily: "var(--font-body)" }}>
                   Eventos & Casamentos
                 </p>
               </div>
             </div>
-            <p className="text-white/35 text-[13px] sm:text-sm leading-[1.8] max-w-sm">
-              Há mais de 13 anos transformando sonhos em realidade no coração de Rio
-              Bonito. Sofisticação, conforto e um atendimento que faz a diferença.
+            <p className="text-white/30 text-[13px] sm:text-sm leading-[1.85] max-w-sm" style={{ fontFamily: "var(--font-body)", fontWeight: 300 }}>
+              Ha mais de 13 anos transformando sonhos em realidade no coracao de Rio
+              Bonito. Sofisticacao, conforto e um atendimento que faz a diferenca.
             </p>
             {/* Socials */}
-            <div className="flex gap-2.5 sm:gap-3 mt-5 sm:mt-6">
+            <div className="flex gap-3 mt-6 sm:mt-7">
               {socials.map((s) => (
                 <a
                   key={s.label}
@@ -82,9 +81,9 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="w-9 h-9 sm:w-10 sm:h-10 bg-white/[0.05] hover:bg-gold/20 rounded-lg sm:rounded-xl flex items-center justify-center transition-all duration-300 group"
+                  className="w-10 h-10 bg-white/[0.05] hover:bg-gold/15 rounded-xl flex items-center justify-center transition-all duration-300 group border border-white/[0.06] hover:border-gold/20"
                 >
-                  <s.icon className="text-white/40 group-hover:text-gold transition-colors duration-300" />
+                  <s.icon className="text-white/35 group-hover:text-gold transition-colors duration-300" />
                 </a>
               ))}
             </div>
@@ -92,15 +91,16 @@ export default function Footer() {
 
           {/* Nav */}
           <div className="col-span-1 md:col-span-3">
-            <h4 className="text-gold/70 uppercase tracking-[0.2em] text-[10px] sm:text-[11px] font-semibold mb-4 sm:mb-6" style={{ fontFamily: "var(--font-body)" }}>
-              Navegação
+            <h4 className="text-gold/60 uppercase tracking-[0.2em] text-[10px] sm:text-[11px] font-semibold mb-5 sm:mb-7" style={{ fontFamily: "var(--font-body)" }}>
+              Navegacao
             </h4>
-            <nav className="flex flex-col gap-2.5 sm:gap-3">
+            <nav className="flex flex-col gap-3 sm:gap-3.5">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-white/30 hover:text-gold text-[12px] sm:text-[13px] transition-colors duration-300"
+                  className="text-white/25 hover:text-gold text-[12px] sm:text-[13px] transition-colors duration-300"
+                  style={{ fontFamily: "var(--font-body)" }}
                 >
                   {link.label}
                 </a>
@@ -110,22 +110,22 @@ export default function Footer() {
 
           {/* Contact */}
           <div className="col-span-1 md:col-span-4">
-            <h4 className="text-gold/70 uppercase tracking-[0.2em] text-[10px] sm:text-[11px] font-semibold mb-4 sm:mb-6" style={{ fontFamily: "var(--font-body)" }}>
+            <h4 className="text-gold/60 uppercase tracking-[0.2em] text-[10px] sm:text-[11px] font-semibold mb-5 sm:mb-7" style={{ fontFamily: "var(--font-body)" }}>
               Contato
             </h4>
-            <div className="space-y-3 sm:space-y-4">
-              <div className="flex items-start gap-2.5 sm:gap-3">
-                <MapPin size={14} className="text-gold/50 mt-0.5 shrink-0" />
-                <p className="text-white/30 text-[12px] sm:text-[13px] leading-relaxed">
-                  R. Júlia Cortines, 64<br />
+            <div className="space-y-4 sm:space-y-5">
+              <div className="flex items-start gap-3">
+                <MapPin size={14} className="text-gold/45 mt-0.5 shrink-0" />
+                <p className="text-white/25 text-[12px] sm:text-[13px] leading-relaxed" style={{ fontFamily: "var(--font-body)" }}>
+                  R. Julia Cortines, 64<br />
                   Centro — Rio Bonito/RJ
                 </p>
               </div>
-              <div className="flex items-center gap-2.5 sm:gap-3">
-                <Phone size={14} className="text-gold/50 shrink-0" />
+              <div className="flex items-center gap-3">
+                <Phone size={14} className="text-gold/45 shrink-0" />
                 <div>
-                  <p className="text-white/30 text-[12px] sm:text-[13px]">(21) 2734-6860</p>
-                  <p className="text-white/30 text-[12px] sm:text-[13px]">(21) 96431-0877</p>
+                  <p className="text-white/25 text-[12px] sm:text-[13px]" style={{ fontFamily: "var(--font-body)" }}>(21) 2734-6860</p>
+                  <p className="text-white/25 text-[12px] sm:text-[13px]" style={{ fontFamily: "var(--font-body)" }}>(21) 96431-0877</p>
                 </div>
               </div>
             </div>
@@ -133,12 +133,12 @@ export default function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="border-t border-white/[0.06] pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
-          <p className="text-white/15 text-[11px] sm:text-xs text-center sm:text-left">
-            &copy; {new Date().getFullYear()} Espaço Ceccarelli. Todos os direitos reservados.
+        <div className="border-t border-white/[0.06] pt-7 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+          <p className="text-white/15 text-[11px] sm:text-xs text-center sm:text-left" style={{ fontFamily: "var(--font-body)" }}>
+            &copy; {new Date().getFullYear()} Espaco Ceccarelli. Todos os direitos reservados.
           </p>
-          <p className="text-white/10 text-[10px] sm:text-[11px] flex items-center gap-1">
-            Demo — feito com <Heart size={9} className="text-gold/30" /> Next.js & Tailwind CSS
+          <p className="text-white/10 text-[10px] sm:text-[11px] flex items-center gap-1.5" style={{ fontFamily: "var(--font-body)" }}>
+            Feito com <Heart size={9} className="text-gold/25" /> Next.js & Tailwind
           </p>
         </div>
       </div>

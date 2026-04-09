@@ -2,9 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { MessageCircle } from "lucide-react";
-
-const WHATSAPP_LINK =
-  "https://wa.me/5521964310877?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20o%20Espa%C3%A7o%20Ceccarelli";
+import { WHATSAPP_LINK_GENERIC } from "@/lib/constants";
 
 export default function WhatsAppButton() {
   const [visible, setVisible] = useState(false);
@@ -17,11 +15,11 @@ export default function WhatsAppButton() {
 
   return (
     <a
-      href={WHATSAPP_LINK}
+      href={WHATSAPP_LINK_GENERIC}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Fale conosco pelo WhatsApp"
-      className={`fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 w-12 h-12 sm:w-14 sm:h-14 bg-[#25D366] hover:bg-[#1EBE5A] rounded-full flex items-center justify-center shadow-xl transition-all duration-700 hover:scale-110 animate-pulse-whatsapp ${
+      className={`fixed bottom-5 right-5 sm:bottom-7 sm:right-7 z-50 w-13 h-13 sm:w-[60px] sm:h-[60px] bg-[#25D366] hover:bg-[#1EBE5A] rounded-full flex items-center justify-center shadow-xl transition-all duration-700 hover:scale-110 animate-pulse-whatsapp ${
         visible
           ? "opacity-100 translate-y-0"
           : "opacity-0 translate-y-6 pointer-events-none"
